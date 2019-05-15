@@ -1,0 +1,20 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<script>
+	var name = "Hello";
+function call1(){
+	var name = "World";
+	document.write("지역:"+name);
+}
+function call2(){
+	document.write("전역"+name);
+}
+</script>
+</head>
+<body>
+<script>call1();</script>
+<script>call2();</script>
+Good...
+</body>
+</html>

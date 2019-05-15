@@ -1,0 +1,31 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<script>
+var arr = new Array("빨간색", 1010, "deadfire", "Javascript", "XX");
+
+document.write("<H2>Original</H2>");
+for(i=0; i<arr.length; i++){
+	document.write("arr[" + i + "] : " + arr[i] + "<br>");
+}
+
+arr.sort(); //기본정렬
+document.write("<hr><h2>기본정렬</h2>");
+for(i=0; i<arr.length; i++){
+	document.write("arr[" + i + "] : " + arr[i] + "<br>");
+}
+
+function compare(a,b){ //값 비교
+	if(a < b) return 1;
+	else if(a > b) return -1;
+	else return 0;
+}
+
+arr.sort(compare);	//역순정렬에 compare함수 사용
+document.write("<h2> 역순정렬 </h2>");
+for(i=0; i<arr.length; i++){
+	document.write("arr[" + i + "] : " + arr[i] + "<br>");
+}
+</script>
+</head>
+</html>

@@ -1,0 +1,180 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<HTML>
+<HEAD>
+<TITLE>이마트 영수증</TITLE>
+<SCRIPT>
+</SCRIPT>
+</HEAD>
+<BODY>
+<SCRIPT>
+
+var itemname = new Array ("호두파이","커피","사이다","오렌지쥬스","초코렛", // 항목명
+                  "삼겹살","콘프레이크","허니버터칩","제주감귤쥬스","스파게티면",
+                  "스파게티소스","신라면","사랑방","콘칩","사과",
+                  "짜장라면","콜라","그릭요거트","비비고만두","고추장",
+                  "떡볶이떡","설거지장갑","축구공","야구배트","야구장갑",
+                  "군만두","버섯","깻잎","마늘","오리훈제");
+                  
+var price = new Array (6000,2500,3300,2500,5000, // 단가
+               12000,6000,1500,2000,1800,
+               4000,3500,3000,1800,3600,
+               2000,3000,1800,3400,4000,
+               2000,1300,20000,30000,12000,
+               9000,1200,1000,800,12000);
+
+var   itemnum = new Array (2,5,2,3,1,4,1,5,2,1, // 수량
+               2,3,1,4,5,1,2,3,1,2,
+               4,5,2,3,4,3,2,1,4,1);
+
+var taxfree = new Array (false,false,false,false,false, //면세와 과세 물품의 분류 
+                     true,false,false,false,false,
+                     false,false,false,false,true,
+                     false,false,false,false,false,
+                     false,false,false,false,false,
+                     false,true,true,true,false);      
+
+
+var tf = 0;   
+var taxPrice = 0;
+var sum = 0;
+var totalPrice = 0;
+var total =0;
+var itaxPrice = 0;
+var taxPrice = 0;
+var val =0;
+
+function AddComma(data_value) {
+   return Number(data_value).toLocaleString('en');
+}
+function leadingZeros (n, digits) {
+   var zero = ''; 
+   n = n.toString();
+   
+   if(n.length < digits) {
+      for (i=0; i< digits - n.length; i++)
+      zero += '0';
+   }
+   return zero + n;
+}
+
+document.write("<TABLE border=0 width=420 cellspacing=0>");
+
+   document.write("<tr>");
+   document.write("<td colspan=2 align=left>" + "<font size=50> <b> e-mart </b> </font><br>"+"</td>");
+   document.write("<td colspan=3 align=left>" + "<font size=2>이마트 죽전점 (031)888-1234<br>206-86-50913 이갑수</font>"+"</td>");
+   document.write("</tr>");
+   
+   document.write("<tr>");
+   document.write("<td colspan=3 align=left>" + "영수증 미지참시 교환/환불 불가(30일이내)"+"<br>"+"교환/환불 구매점에서 가능(결제카드지참) <br> 체크카드/신용카드 청구취소 반영은 <br> 최대 3~5일 소요 (주말,공휴일제외) <br><br>"+"</font>"+"</td>");
+   document.write("</tr>");
+   document.write("<tr>");
+   document.write("</tr>");
+document.write("</TABLE>");
+   
+document.write("<TABLE border=0 width=420 cellspacing=0>");   
+   document.write("<tr>");
+   document.write("<td colspan=2 align=left>" + "[구 매]"+"시간"+"</td>");
+   document.write("<td colspan=3 align=right>" + "POS:0009-2418"+"</td>");
+   document.write("</tr>");
+document.write("</TABLE>");
+
+document.write("<TABLE border=0 width=420 cellspacing=0 >");   
+   document.write("<tr>");
+   document.write("<td align=right width=40>" + "" + "</td>");
+   document.write("<td align=lift width=180>" + "<b>" + "상 품 명"+ "</b>"+"</td>");
+   document.write("<td align=center>" + "<b>" + "단 가"+ "</b>"+"</td>");
+   document.write("<td align=lift>" + "<b>" + "수량"+ "</b>"+"</td>");
+   document.write("<td align=right>" + "<b>" + "금 액"+ "</b>"+"</td>");
+   document.write("</tr>");
+document.write("</TABLE>");   
+
+document.write("<TABLE border=0 width=420 cellspacing=0>");   
+
+    for(d = 0; d < 30; d++) { //숫자,*출력 for문
+         document.write("<tr>");
+         document.write("<td>" + (d+1) + "</td>"); // (%02d,i) = d가 정수를 출력한다는 의미, for문 i가 도는 만큼 출력
+         if(taxfree[d] == true) {
+            document.write("<td>" + "*" + "</td>"); //tax가 false일때는 *출력
+         tf = price[d]*itemnum[d];
+		 tft = tf + tf
+      
+         } else {
+            document.write("<td>" + " " + "</td>"); //tax가 true일때는 "  "공백 출력
+         taxPrice = price[d]*itemnum[d];
+		 taxPricet = taxPricet + taxPrice
+
+      
+         }
+       total = tft + taxPricet;
+       itaxPrice = (taxPricet / 1.1);
+       
+       val = taxPricet - itaxPrice;
+       
+      document.write("<td>"+itemname[d]+"</td>");
+      document.write("<td align=right>"+AddComma (price[d])+"</td>");
+      document.write("<td align=right>"+AddComma (itemnum[d])+"</td>");
+      
+      document.write("<td align=right>"+AddComma (price[d]*itemnum[d])+"</td>");
+      document.write("</tr>");
+      
+   }
+   
+   
+   
+document.write("</TABLE>");   
+
+      document.write("<table border=0 width = 420 cellspacing=0>"); //cellspacing=셀과 셀 사이 여백 //테이블 만듬
+      document.write("<tr>");
+      document.write("<td align=right>" + "(*)면 세  물 품" + "</td>");
+      document.write("<td align=right>" + AddComma(tf) + "</td>");
+      document.write("</tr>");
+      
+      document.write("<tr>");
+      document.write("<td align=right>" + "과 세  물 품" + "</td>");
+      document.write("<td align=right>" + AddComma(itaxPricet) + "</td>");
+      document.write("</tr>");
+      
+      document.write("<tr>");
+      document.write("<td align=right>" + "부   가   세" + "</td>");
+      document.write("<td align=right>" + AddComma(val) + "</td>");
+      document.write("</tr>");
+      
+      document.write("<tr>");
+      document.write("<td align=right>" + "합        계" + "</td>");
+      document.write("<td align=right>" + AddComma(total) + "</td>");   
+      document.write("</tr>");
+      
+      document.write("<tr>");
+      document.write("<td align=right>" + "결 제 대 상 금 액" + "</td>");
+      document.write("<td align=right>" + AddComma(total) + "</td>");   
+      document.write("</tr>");
+      
+      document.write("<tr>");
+      document.write("<td colspan=2 align=left>"+"---------------------------------------------------------------"+"</td>");
+      document.write("</tr>");
+      
+      document.write("<tr>");
+      document.write("<td align=left>" + "0024 하  나" + "</td>");
+      document.write("<td align=right>" + "5417**8890/07850246" + "</td>");
+      document.write("</tr>");
+      
+      document.write("<tr>");
+      document.write("<td align=left>" + "카드결제" + "</td>");
+      document.write("<td align=right>" + "일시불 / " + AddComma(total) + "</td>");
+      document.write("</tr>");
+      
+      document.write("<tr>");
+      document.write("<td colspan=2 align=left>"+"---------------------------------------------------------------"+"</td>");
+      document.write("</tr>");
+      
+      document.write("<tr>");
+      document.write("<td colspan=2 align=left>" + "연동모듈:[00138705" + "  " +time2()+ "]" + "</td>");
+      document.write("</tr>");
+      
+      document.write("</table>"); //table 닫음 
+
+
+
+</SCRIPT>
+</BODY>
+</HTML>
