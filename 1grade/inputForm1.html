@@ -1,0 +1,83 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+	<title> 추가 </title>
+	<script>
+	function onlyNumber(event){			//숫자만 출력
+			event = event || window.event;
+			var keyID = (event.which) ? event.which : event.keyCode;
+			if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+				return;
+			else
+				return false;
+	}
+	function removeChar(event) {	//문자제거
+			event = event || window.event;
+			var keyID = (event.which) ? event.which : event.keyCode;
+			if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+				return;
+			else
+				event.target.value = event.target.value.replace(/[^0-9]/g, "");
+	}
+	</script>
+		<script>
+		function onlyKE(event){ //한글입력만
+			event = event || window.event;
+			var keyID = (event.which) ? event.which : event.keyCode;
+			if ( (keyID >= 65 && keyID <= 90) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+				// 8=Backspace, 46=Delete, 37=왼쪽 화살표, 39=오른쪽 화살표
+				return;
+			else
+				return false;
+		}
+		function removeChar1(event) { //문자열 제거
+			event = event || window.event;
+			var keyID = (event.which) ? event.which : event.keyCode;
+			if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+				return;
+			else
+				event.target.value = event.target.value.replace(/[^(ㄱ-힣a-zA-Z)]/gi, "");
+		}
+		</script>
+</head>
+
+<body>
+<h1>성적입력추가</h1>
+<form method="post" action="insertDB.jsp">	<!-- 성적추가를 위해 입력된 데이터 insertDB로 전송 -->
+	<TABLE border=0 width=400 cellspacing=0>
+		<tr>
+			<td>
+				<div align="right">
+					<input type="submit" value="추가"></input>	<!-- 추가 버튼 생성 -->
+				</div>
+			</td>
+		</tr>
+	</TABLE>
+	<table border=1 width=400 cellspacing=1>
+		<tr>
+			<td width=100 align=center>이름</td>
+			<td width=300 align=center><input type="text" onkeydown='return onlyKE(event)' onkeyup='removeChar1(event)' name="username" value=''></td>	<!-- 이름 작성란 -->
+		</tr>
+		<tr>
+			<td width=100 align=center>학번</td>
+			<td width=300 align=center>자동부여</td>											<!-- 학번은 자동으로 생성 -->
+		</tr>
+		<tr>
+			<td width=100 align=center>국어</td>
+			<td width=300 align=center><input type="text" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' name="userkor" value=''></td>
+														<!-- 국어점수 입력란 --><!-- head 부분 function넣은 onkeydown, onkeyup로 문자입력 막음 -->
+		</tr>
+		<tr>
+			<td width=100 align=center>영어</td>
+			<td width=300 align=center><input type="text" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' name="usereng" value=''></td>
+														<!-- 영어점수 입력란 --><!-- head 부분 function넣은 onkeydown, onkeyup로 문자입력 막음 -->
+		</tr>
+		<tr>
+			<td width=100 align=center>수학</td>
+			<td width=300 align=center><input type="text" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' name="usermat" value=''></td>
+														<!-- 수학점수 입력란 --><!-- head 부분 function넣은 onkeydown, onkeyup로 문자입력 막음 -->
+			<span id="keyinfo"></span>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+<title>성적 정정/삭제 페이지</title>
+	<script>
+	function onlyNumber(event){
+			event = event || window.event;
+			var keyID = (event.which) ? event.which : event.keyCode;
+			if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+				return;
+			else
+				return false;
+		}
+		function removeChar(event) {
+			event = event || window.event;
+			var keyID = (event.which) ? event.which : event.keyCode;
+			if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+				return;
+			else
+				event.target.value = event.target.value.replace(/[^0-9]/g, "");
+		}
+	</script>
+</head>
+<body>
+
+<h1>성적 조회후 정정 / 삭제</h1>
+<form method="post" action="showREC.jsp">
+	<TABLE border=0 width=400 cellspacing=0> <!--버튼-->
+		<tr>
+			<td>조회할 학번</td>
+			<td align=center><input type= "text" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' name="searchid" value=''></td>
+			<td align="right"><input type="submit" value="조회"></input></td>
+		</tr>
+	</TABLE>
+	<TABLE border=1 width=450 cellspacing=0>
+	<br>
+		<tr>
+		   <td width=100 align=center>이름</td>
+		   <td width=300 align=center><input type= "text"  name="username" value=''> </td>
+		</tr>
+		<tr>
+		   <td width=100 align=center>학번</td>
+		   <td width=300 align=center></td>
+		</tr>
+		<tr>
+		   <td width=100 align=center>국어</td>
+		   <td width=300 align=center><input type= "text" name="userkor" value='' ></td>
+		</tr>
+		<tr>
+		   <td width=100 align=center>영어</td>
+		   <td width=300 align=center><input type= "text" name="usereng" value=''></td>
+		</tr>
+		<tr>
+		   <td width=100 align=center>수학</td>
+		   <td width=300 align=center><input type= "text" name="usermat" value=''></td>
+		</tr>
+	</TABLE>
+	<TABLE border=0 width=450 cellspacing=0>
+		<tr>
+			<td width=220 align=right><input type="submit" value="수정"></input></td>
+			<td width=80 align="center"><input type="submit" value="삭제"></input></td>
+		</tr>
+	</TABLE>
+</form>
+</body>
+</html>
