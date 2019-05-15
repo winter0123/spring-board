@@ -1,0 +1,141 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> 홈페이지테스트 </title>
+<style type='text/css'>
+td{font-size:12; text-align:center; }
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:none;}
+a:acvite {text-decoration:none;}
+</style>
+<script language='javascript' type='text/javascript'>
+var muCnt = 5;	// 전체 메뉴 카테고리 개수
+
+function fncShow( pos ){	// 메뉴바 function
+	var i = 0;
+	for(i; i<muCnt; i++ ) {	// 0 ~ 전체 메뉴 카테고리 개수까지 돌림
+	var obj = document.getElementById("menu"+i);
+	var obj2 = document.getElementById("m"+i);
+	if( i == pos ){
+		obj.style.display = '';
+		obj2.style.color="#ff0000";	// 마우스 올리면 바뀌는 색(빨강)
+		}else{
+		obj.style.display = 'none';
+		obj.style.color="#000000";	// 마우스 올리기 전 색(검정)
+		}
+	}
+}
+function fncHide( pos ){
+	var obj = document.getElementById("menu"+pos);
+	obj.style.display = 'none';
+}
+</script>
+</head>
+<body bgcolor="#EFFBFB">
+<center>
+<table cellpadding='0' cellspacing='0' border='0' width='750'>
+<td width='300'><a href='main.jsp' target=main><img src="image/logo.png" width='150' height='60' border='0'></a>	<!-- 로고 이미지 -->
+</td>
+<td>
+<table cellpadding='0' cellspacing='0' border='0' width='750'>	<!-- 맨 위 로고 옆 메뉴 창 -->
+	<tr height='30'>
+		<td width='100' onmouseover='fncShow(0);' id='m0'><b>About</b></td>
+		<td width='100' onmouseover='fncShow(1);' id='m1'><b>MAP</b></td>
+		<td width='100' onmouseover='fncShow(2);' id='m2'><b>TOURIST SPOT</b></td>
+		<td width='100' onmouseover='fncShow(3);' id='m3'><b>RESERVATION</b></td>
+		<td width='100' onmouseover='fncShow(4);' id='m4'><b>NOTICE</b></td>
+		<td width='100'></td>
+	</tr>
+	<tr height='30'>
+		<td colspan='6'>
+			<table id='menu0' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='700' height='30'> <!-- About에 마우스를 대면 나오는 하단 메뉴 창 -->
+				<tr>																									<!-- style='display:none;'으로 마우스 대기 전에는 가려줌 -->
+					<td width='40' ></td>
+					<td width='660' style='text-align:left;' >
+						<a href='main.jsp' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| CASTLE </span>
+						</a>
+						<a href='a_01.html' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| VIP Room </span>
+						</a>
+						<a href='a_02.html' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| Suite Room </span>
+						</a>
+						<a href='a_03.html' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| Standard Room |</span>
+						</a>
+					</td>
+				</tr>
+			</table>
+			<table id='menu1' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='700' height='30'> <!-- MAP에 마우스를 대면 나오는 하단 메뉴 창 -->
+				<tr>
+					<td width='170' ></td>
+					<td width='530' style='text-align:left;' >
+						<a href='b_01.html' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| The Way </span>
+						</a>
+						<a href='b_02.html' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| Public Transit </span>
+						</a>
+						<a href='b_03.html' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| Private Car |</span>
+						</a>
+					</td>
+				</tr>
+			</table>
+			<table id='menu2' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='700' height='30'> <!-- TOURIST SPOT에 마우스를 대면 나오는 하단 메뉴 창 -->
+			  <tr>
+					<td width='260' ></td>
+					<td width='440' style='text-align:left;' >
+						<a href='c_01.html' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| Seoultower </span>
+						</a>
+						<a href='c_02.html' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| Bukchon Village </span>
+						</a>
+						<a href='c_03.html' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| Hangang River |</span>
+						</a>
+					</td>
+				</tr>
+			</table>
+			<table id='menu3' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='700' height='30'> <!-- RESERVATION에 마우스를 대면 나오는 하단 메뉴 창 -->
+			  <tr>
+					<td width='260' ></td>
+					<td width='440' style='text-align:left;' >
+						<a href='d_01.jsp' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| Check Availability</span>
+						</a>
+						<a href='d_02.jsp' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| Reservation </span>
+						</a>
+						<a href='adm_allview.jsp' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| AdmPage </span>
+						</a>
+						<a href='adm_logout.jsp' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| AdmLogout |</span>
+						</a>
+					</td>
+				</tr>
+			</table>
+			<table id='menu4' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='700' height='30'> <!-- NOTICE에 마우스를 대면 나오는 하단 메뉴 창 -->
+				<tr>
+					<td width='485' ></td>
+					<td width='215' style='text-align:left;' >
+						<a href='5gongji/e_01.jsp' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| News </span>
+						</a>
+						<a href='5reply/e_02.jsp' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| Reviews |</span>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</td></table></center>
+</body>
+</html>

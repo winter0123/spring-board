@@ -1,0 +1,42 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="euc-kr">
+ <title>구글지도 위치</title>
+
+ <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+ <script>
+  function initialize() {
+   var myLatlng = new google.maps.LatLng(37.551363, 126.988229);
+   var mapOptions = {
+        zoom: 17,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+   }
+   var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+   var marker = new google.maps.Marker({
+             position: myLatlng,
+             map: map,
+             title: "Castle"
+});
+	var infowindow = new google.maps.InfoWindow(
+           {
+            content: "<h2>Castle</h2>",
+            maxWidth: 700
+           }
+);
+
+google.maps.event.addListener(marker, 'click', function() {
+ infowindow.open(map, marker);
+});
+  }
+ </script>
+</head>
+<body onload="initialize()">
+	<center>
+	<div id="map_canvas"style="width:700px; height:500px;"></div>
+	<h2>지도를 보고 잘 찾아오세요</h2>
+	</center>
+</body>
+</html>
